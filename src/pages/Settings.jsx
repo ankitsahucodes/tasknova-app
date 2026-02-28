@@ -33,6 +33,8 @@ const Settings = () => {
 
       await projectLoading;
       await fetchProjects();
+      await taskLoading;
+      await fetchTasks()
     } catch (error) {
       console.error("Error deleting Project:", error);
       toast.error("Failed to delete Project");

@@ -51,7 +51,7 @@ const Projects = () => {
       </div>
 
       <div className="row">
-        {filteredProjects.length > 0 &&
+        {filteredProjects.length > 0 ?
           filteredProjects?.map((project) => (
             <div key={project?._id} className="col-md-6 col-lg-4 col-12 my-3">
               <Link
@@ -64,7 +64,7 @@ const Projects = () => {
                 </div>
               </Link>
             </div>
-          ))}
+          )) : <p>No Project Found</p>}
       </div>
     </div>
   );

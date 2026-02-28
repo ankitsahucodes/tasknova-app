@@ -53,7 +53,7 @@ const TaskDetails = () => {
           <div className="card border-0 bg-light mt-3">
             <div className="card-body">
               <p>
-                <strong>Project: </strong> {taskData.project.name}
+                <strong>Project: </strong> {taskData?.project?.name}
               </p>
               <p>
                 <strong>Team: </strong>
