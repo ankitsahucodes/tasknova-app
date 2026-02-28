@@ -11,9 +11,7 @@ function ToggleSidebar() {
         data-bs-target="#offcanvasWithBothOptions"
         aria-controls="offcanvasWithBothOptions"
       >
-        {" "}
         <FaBars className="fs-4 text-secondary" size="1.2em" />
-      
       </button>
       <div
         className="offcanvas offcanvas-start"
@@ -36,7 +34,11 @@ function ToggleSidebar() {
             aria-label="Close"
           ></button>
         </div>
-        <div className="offcanvas-body" style={{ background: "#EDE9FE" }}>
+        <div
+          className="offcanvas-body"
+          style={{ background: "#EDE9FE" }}
+          data-bs-dismiss="offcanvas"
+        >
           <Sidebar />
         </div>
       </div>

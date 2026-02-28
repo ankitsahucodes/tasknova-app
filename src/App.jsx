@@ -15,19 +15,23 @@ function App() {
         </div>
 
         <div className="col-12 col-md-9 col-lg-10">
-          <div className="d-md-none py-2">
+          <div className="d-md-none pt-2">
             <div className="row">
               <div className="col-4">
                 <ToggleSidebar />
               </div>
 
-              <div style={{ color: "#6650EC" }} className="fs-4 fw-bold col-8">
+              <div style={{ color: "#6650EC" }} className="fs-2 fw-bold col-8">
                 Tasknova
               </div>
             </div>
           </div>
 
+        <div className="mx-2">
+
+
           <Outlet />
+          </div>
         </div>
       </div>
     </div>

@@ -3,29 +3,14 @@ import { useDataContext } from "../context/DataContext";
 import { useState } from "react";
 import Spinner from "../components/Spinner";
 import ErrorMessage from "../components/ErrorMessage";
-import Tasks from "../components/Tasks";
-import AddNewTask from "../components/AddNewTask";
 import { Link } from "react-router-dom";
 
-export default function Homepage() {
-  const {
-    projects,
-    fetchProjects,
-    projectLoading,
-    projectError,
-    statusOptions,
-    tasks,
-  } = useDataContext();
+const Projects = () => {
+  const { projects, fetchProjects, projectLoading, projectError } =
+    useDataContext();
 
   const [showProjectModal, setShowProjectModal] = useState(false);
-  const [showTaskModal, setShowTaskModal] = useState(false);
-  const [statusFilter, setStatusFilter] = useState("All");
   const [search, setSearch] = useState("");
-
-  const filteredTasks =
-    statusFilter === "All"
-      ? tasks
-      : tasks.filter((task) => task.status === statusFilter);
 
   if (projectLoading) return <Spinner />;
   if (projectError) return <ErrorMessage message={projectError} />;
@@ -81,43 +66,8 @@ export default function Homepage() {
             </div>
           ))}
       </div>
-
-      <div className="mt-5">
-        <div className="d-flex justify-content-between">
-          <div className="d-flex justify-content-between">
-            <h2 className="me-3 fw-bold">My Tasks</h2>
-            <label htmlFor="status"></label>
-            <select
-              className="form-select w-auto"
-              id="status"
-              name="status"
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-            >
-              <option value="All">All</option>
-              {statusOptions.map((status) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <button
-              className="btn btn-primary btn-sm"
-              onClick={() => setShowTaskModal(true)}
-            >
-              + New Task
-            </button>
-            <AddNewTask
-              isOpen={showTaskModal}
-              onClose={() => setShowTaskModal(false)}
-            />
-          </div>
-        </div>
-        <Tasks filteredTasks={filteredTasks} />
-      </div>
     </div>
   );
-}
+};
+
+export default Projects;

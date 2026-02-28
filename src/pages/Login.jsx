@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -28,29 +29,26 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/login",
-        loginInfo,
-      );
-    //   console.log(response);
-     
+      const response = await axios.post(`${BASE_URL}/auth/login`, loginInfo);
+      // console.log(response);
+
       localStorage.setItem("userToken", response.data.token);
       localStorage.setItem("userMail", response.data.email);
+      localStorage.setItem("userName", response.data.name);
       setLoginInfo({
         email: "",
         password: "",
       });
 
-       toast.success(response.data.message || "Logged In Successfully!");
+      toast.success(response.data.message || "Logged In Successfully!");
 
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+      navigate("/");
     } catch (error) {
-    //   console.log(error);
+      //   console.log(error);
       return toast.error(error?.response?.data?.error || "Login failed!");
     }
   };
+  // console.log(import.meta.env.VITE_API_BASE_URL);
 
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">

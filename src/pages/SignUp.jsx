@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const SignUp = () => {
   const [signupInfo, setSignupInfo] = useState({
@@ -30,7 +32,7 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/signup",
+       `${BASE_URL}/auth/signup`,
         signupInfo,
       );
       toast.success(response.data.message || "User added Successfully!");
