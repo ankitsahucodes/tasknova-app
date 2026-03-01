@@ -8,7 +8,7 @@ Build with React Frontend, Express/Node backend, MongoDB database and React Rout
 
 ##  Quick Start
 ```
-git clone https://github.com/ankitsahucodes/neraxis-app.git
+git clone https://github.com/ankitsahucodes/tasknova-app.git
 cd tasknova-app
 npm install
 npm run dev
